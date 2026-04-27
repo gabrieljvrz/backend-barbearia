@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum Role {
+  ADMIN
+  CLIENTE 
+  BARBEIRO
+}
+
+model Usuario {
+  id                       Int @id @default(autoincrement())
+  nome                     String
+  email                    String @unique
+  senha                    String
+  telefone                 String @unique
+  role                     Role @default(CLIENTE)
+  agendamentosComoCliente  Agendamento[] @relation("AgendamentosCliente")
+  agendamentosComoBarbeiro Agendamento[] @relation("AgendamentosBarbeiro")
+}
+
+model Servico {
+  id                     Int @id @default(autoincrement())
+  categoria              String
+  descricao              String
+  valor                  Decimal
+  duracao                Int
+  agendamentosPorServico Agendamento[] @relation("AgendamentosServico")
+}
+
+enum Status  {
+  PENDENTE
+  CONCLUIDO
+  CANCELADO
+}
+
+model Agendamento {
+  id               Int @id @default (autoincrement())
+  servicoId        Int
+  servico          Servico @relation("AgendamentosServico", fields: [servicoId], references: [id])
+  barbeiroId       Int
+  barbeiro         Usuario @relation("AgendamentosBarbeiro", fields: [barbeiroId], references: [id])
+  clienteId        Int
+  cliente          Usuario @relation("AgendamentosCliente", fields: [clienteId], references: [id])
+  data_hora_inicio DateTime
+  status           Status @default(PENDENTE)
+}
