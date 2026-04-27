@@ -1,15 +1,9 @@
 node_modules
-# Keep environment variables out of version control
 .env
 .env.local
-# Logs
 logs
 *.log
 npm-debug.log*
-
-# Arquivos de Sistema Operacional (útil se você ou alguém da equipe usar Mac/Linux no futuro)
 .DS_Store
 Thumbs.db
-
-# Prisma (opcional, dependendo de como você gera o client)
 /generated/prisma

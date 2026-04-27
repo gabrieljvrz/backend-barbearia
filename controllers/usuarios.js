@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import prisma from '../config/database.js';
 import bcrypt from 'bcrypt';
+import { resolve } from 'dns';
 
 //CREATE
 export const criarUsuario = async (req, res) => {
