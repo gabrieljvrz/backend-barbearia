@@ -2,9 +2,9 @@ import express from 'express';
 
 import { verificarToken } from '../middlewares/autenticacao.js'
 import { verificarRole, verificarPropriedade } from '../middlewares/autorizacao.js';
-
 import { validarDados } from '../middlewares/validacao.js'
-import { usuarioCreateSchema, usuarioUpdateSchema } from '../schemas/usuarioSchemas.js';
+
+import { usuarioCreateSchema, usuarioUpdateSchema } from '../schemas/usuarioSchema.js';
 
 import { 
     criarUsuario, 

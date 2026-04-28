@@ -12,7 +12,7 @@ export const verificarRole = (cargosPermitidos) => {
 
 export const verificarPropriedade = (req, res, next) => {
     //id passado na rota (que será editado)
-    const idRota = Numer(req.params.id);
+    const idRota = Number(req.params.id);
 
     //id e role de qm fez a req
     const usuarioId = req.usuario.id;

@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import prisma from '../config/database.js';
 import bcrypt from 'bcrypt';
-import { resolve } from 'dns';
 
 //CREATE
 export const criarUsuario = async (req, res) => {
@@ -22,7 +21,7 @@ export const criarUsuario = async (req, res) => {
 
         const { senha: _, ...usuarioSemSenha } = novoUsuario;
 
-        return res.status(201).json({ message: 'Usuário criado com sucesso!', usuario: usuarioSemSenha });
+        return res.status(201).json({ message: 'Usuário criado com sucesso!', usuarioSemSenha });
     } catch (erro) {
         return res.status(400).json({ erro: 'Erro ao criar novo usuário!', detalhes: erro.message });
     }
@@ -43,7 +42,7 @@ export const listarUsuarios = async (req, res) => {
 
         return res.status(200).json(usuarios);
     } catch (error) {
-        return res.status(500).json({ erro: 'Erro ao buscar usuários!' });
+        return res.status(500).json({ erro: 'Erro ao buscar usuários!', detalhes: erro.message });
     }
 };
 
@@ -64,7 +63,7 @@ export const listarUsuarioPorId = async (req, res) => {
 
         return res.status(200).json(usuarioSemSenha);
     } catch (error) {
-        return res.status(500).json({ erro: "Erro no servidor!" });
+        return res.status(500).json({ erro: "Erro ao buscar usuário!", detalhes: erro.message });
     }
 }
 
