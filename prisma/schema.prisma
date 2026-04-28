@@ -52,5 +52,6 @@ model Agendamento {
   clienteId        Int
   cliente          Usuario @relation("AgendamentosCliente", fields: [clienteId], references: [id])
   data_hora_inicio DateTime
+  data_hora_fim    DateTime
   status           Status @default(PENDENTE)
 }
