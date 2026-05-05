@@ -321,7 +321,7 @@ Aplica o schema Zod no `req.body`. Em caso de erro, retorna `400` com detalhes d
 ```bash
 # Clone o repositório
 git clone https://github.com/gabrieljvrz/backend-barbearia.git
-cd sistema-barbearia
+cd backend-barbearia
 
 # Instale as dependências
 npm install
